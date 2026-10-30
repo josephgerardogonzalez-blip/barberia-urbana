@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Barbería Urbana: una propuesta académica de barbería con servicios, galería y formulario de demostración.">
+    <meta name="theme-color" content="#18181b">
+    <title>Barbería Urbana | Estilo con carácter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-coal: #18181b;
+        --color-paper: #f7f5ef;
+        --color-soft-gray: #e5e7eb;
+        --color-gold: #d4af37;
+        --color-success: #166534;
+        --color-danger: #b42318;
+        --color-warning: #8a5a00;
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-sans: "Manrope", Arial, sans-serif;
+      }
+    </style>
+    <style>
+      :root {
+        color-scheme: light;
+        --surface-page: #f7f5ef;
+        --surface-card: #ffffff;
+        --surface-muted: #e5e7eb;
+        --text-main: #18181b;
+        --text-muted: #52525b;
+        --warning-ink: #775500;
+        --danger-ink: #b42318;
+        --focus-ring: #775500;
+        --line-color: #d4d4d8;
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --surface-page: #18181b;
+        --surface-card: #27272a;
+        --surface-muted: #3f3f46;
+        --text-main: #f4f4f5;
+        --text-muted: #d4d4d8;
+        --warning-ink: #f3cd4f;
+        --danger-ink: #fca5a5;
+        --focus-ring: #f3cd4f;
+        --line-color: #52525b;
+      }
+      html { scroll-behavior: smooth; }
+      body { background: var(--surface-page); color: var(--text-main); }
+      .surface-page { background-color: var(--surface-page); }
+      .surface-card { background-color: var(--surface-card); }
+      .surface-muted { background-color: var(--surface-muted); }
+      .text-main { color: var(--text-main); }
+      .text-muted { color: var(--text-muted); }
+      .text-warning { color: var(--warning-ink) !important; }
+      .text-danger { color: var(--danger-ink) !important; }
+      .line-theme { border-color: var(--line-color); }
+      .field-control { background-color: var(--surface-card); color: var(--text-main); border-color: var(--line-color); }
+      .field-control::placeholder { color: var(--text-muted); opacity: .85; }
+      .field-control:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+      :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
+      header :focus-visible, #inicio :focus-visible { outline-color: #f3cd4f; }
+      .faq-answer[hidden] { display: none; }
+      #toast[data-visible="true"] { opacity: 1; transform: translateY(0); pointer-events: auto; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      }
+    </style>
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body class="font-sans antialiased">
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-gold focus:px-4 focus:py-3 focus:font-bold focus:text-coal" href="#contenido">Saltar al contenido</a>
+
+    <header class="sticky top-0 z-50 bg-coal text-white shadow-lg">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+        <a href="#inicio" class="flex shrink-0 items-center gap-3 rounded-lg focus-visible:outline-offset-4" aria-label="Barbería Urbana, ir al inicio">
+          <span class="grid size-10 place-items-center rounded-full border border-gold text-gold" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="m8 8 12 12M8 16 20 4M14 10l-3 3"/></svg>
+          </span>
+          <span class="font-display text-lg leading-tight sm:text-xl">Barbería <span class="text-gold">Urbana</span></span>
+        </a>
+
+        <div class="hidden items-center gap-6 lg:flex" id="desktop-links">
+          <a class="rounded py-2 text-sm text-zinc-200 transition hover:text-gold" href="#servicios">Servicios</a>
+          <a class="rounded py-2 text-sm text-zinc-200 transition hover:text-gold" href="#nosotros">Nosotros</a>
+          <a class="rounded py-2 text-sm text-zinc-200 transition hover:text-gold" href="#galeria">Galería</a>
+          <a class="rounded py-2 text-sm text-zinc-200 transition hover:text-gold" href="#faq">Preguntas</a>
+          <a class="rounded py-2 text-sm text-zinc-200 transition hover:text-gold" href="#cita">Contacto</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="rounded-full border border-zinc-500 px-3 py-2 text-xs font-bold text-white transition hover:border-gold hover:text-gold sm:px-4 sm:text-sm" aria-label="Cambiar a modo oscuro" aria-pressed="false">
+            <span id="theme-toggle-label">Modo oscuro</span>
+          </button>
+          <button id="menu-toggle" type="button" class="grid size-10 place-items-center rounded-lg border border-zinc-500 text-white transition hover:border-gold hover:text-gold lg:hidden" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false">
+            <svg id="menu-icon" viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden border-t border-zinc-700 bg-coal px-4 pb-5 pt-2 lg:hidden">
+        <div class="mx-auto grid max-w-7xl gap-1 sm:grid-cols-2">
+          <a class="rounded-lg px-3 py-3 text-zinc-100 transition hover:bg-zinc-800 hover:text-gold" href="#servicios">Servicios</a>
+          <a class="rounded-lg px-3 py-3 text-zinc-100 transition hover:bg-zinc-800 hover:text-gold" href="#nosotros">Nosotros</a>
+          <a class="rounded-lg px-3 py-3 text-zinc-100 transition hover:bg-zinc-800 hover:text-gold" href="#galeria">Galería</a>
+          <a class="rounded-lg px-3 py-3 text-zinc-100 transition hover:bg-zinc-800 hover:text-gold" href="#faq">Preguntas frecuentes</a>
+          <a class="rounded-lg px-3 py-3 text-zinc-100 transition hover:bg-zinc-800 hover:text-gold sm:col-span-2" href="#cita">Solicitar una cita</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section id="inicio" class="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16" aria-labelledby="hero-title">
+        <div class="mx-auto grid max-w-7xl items-center gap-8 overflow-hidden rounded-3xl bg-coal p-6 text-white sm:p-10 md:grid-cols-2 lg:gap-12 lg:p-14">
+          <div class="order-2 md:order-1">
+            <p class="mb-4 flex items-center gap-3 text-xs font-extrabold uppercase tracking-[.24em] text-gold sm:text-sm"><span class="h-px w-10 bg-gold"></span> Estilo con carácter</p>
+            <h1 id="hero-title" class="max-w-xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Un buen corte cambia la forma de entrar.</h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg">Un espacio creado para quienes disfrutan los buenos detalles, la conversación tranquila y un estilo que se siente propio.</p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#servicios" class="inline-flex min-h-12 items-center justify-center rounded-full bg-gold px-6 py-3 text-center font-extrabold text-coal transition hover:bg-yellow-300 focus-visible:outline-white">Consultar servicios</a>
+              <a href="#cita" class="inline-flex min-h-12 items-center justify-center rounded-full border border-zinc-400 px-6 py-3 text-center font-bold text-white transition hover:border-gold hover:text-gold">Solicitar una cita</a>
+            </div>
+            <p class="mt-5 text-xs leading-5 text-zinc-400">Proyecto académico ficticio. Este sitio no representa un local abierto ni recibe reservas reales.</p>
+          </div>
+          <figure class="order-1 overflow-hidden rounded-2xl md:order-2">
+            <img class="aspect-[4/3] w-full object-cover" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&amp;fit=crop&amp;w=1000&amp;q=75" alt="Barbero perfilando la barba de un cliente con tijeras" fetchpriority="high" decoding="async">
+            <figcaption class="sr-only">Imagen ilustrativa de una barbería.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="servicios" class="surface-page px-4 py-16 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="services-title">
+        <div class="mx-auto max-w-7xl">
+          <div class="mx-auto mb-10 max-w-2xl text-center">
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-warning">Elige tu estilo</p>
+            <h2 id="services-title" class="font-display text-3xl sm:text-4xl">Servicios para sentirte bien</h2>
+            <p class="text-muted mt-4 leading-7">Precios de ejemplo en pesos colombianos (COP), creados únicamente para este ejercicio académico.</p>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <article class="surface-card line-theme rounded-2xl border p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div class="mb-5 grid size-12 place-items-center rounded-full bg-gold/20 text-warning" aria-hidden="true"><svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20 20 4M7 4l13 13M4 7l13 13"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/></svg></div>
+              <h3 class="font-display text-xl">Corte clásico</h3>
+              <p class="text-muted mt-2 min-h-14 leading-6">Un corte diseñado para ti, con acabado limpio y un estilo que habla de ti.</p>
+              <p class="mt-5 font-extrabold text-warning">$38.000 <span class="text-muted text-sm font-medium">COP · ejemplo</span></p>
+            </article>
+            <article class="surface-card line-theme rounded-2xl border p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div class="mb-5 grid size-12 place-items-center rounded-full bg-gold/20 text-warning" aria-hidden="true"><svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h18M7 12V7a5 5 0 0 1 10 0v5M6 12l2 8h8l2-8"/></svg></div>
+              <h3 class="font-display text-xl">Corte + barba</h3>
+              <p class="text-muted mt-2 min-h-14 leading-6">Corte y perfilado de barba en una sesión de cuidado completa.</p>
+              <p class="mt-5 font-extrabold text-warning">$55.000 <span class="text-muted text-sm font-medium">COP · ejemplo</span></p>
+            </article>
+            <article class="surface-card line-theme rounded-2xl border p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg md:col-span-2 lg:col-span-1">
+              <div class="mb-5 grid size-12 place-items-center rounded-full bg-gold/20 text-warning" aria-hidden="true"><svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16M6 5l2 14h8l2-14M9 9v6M12 9v6M15 9v6"/></svg></div>
+              <h3 class="font-display text-xl">Afeitado clásico</h3>
+              <p class="text-muted mt-2 min-h-14 leading-6">Un ritual de afeitado tradicional con toalla tibia y acabado suave.</p>
+              <p class="mt-5 font-extrabold text-warning">$28.000 <span class="text-muted text-sm font-medium">COP · ejemplo</span></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="nosotros" class="surface-card px-4 py-16 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="about-title">
+        <div class="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 lg:gap-16">
+          <figure class="overflow-hidden rounded-2xl">
+            <img class="aspect-[4/3] w-full object-cover" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&amp;fit=crop&amp;w=850&amp;q=75" alt="Herramientas de barbería organizadas en una estación de trabajo" loading="lazy" decoding="async">
+            <figcaption class="sr-only">Fotografía ilustrativa de herramientas de barbería.</figcaption>
+          </figure>
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-warning">Una idea, un estilo</p>
+            <h2 id="about-title" class="font-display text-3xl sm:text-4xl">El cuidado también está en los detalles.</h2>
+            <p class="text-muted mt-5 leading-7">Barbería Urbana es una marca ficticia creada para un taller universitario. Su concepto combina el oficio clásico de la barbería con un espacio actual, cómodo y pensado para que cada persona encuentre su propio estilo.</p>
+            <p class="text-muted mt-4 leading-7">La historia, los servicios, los horarios y los precios que aparecen en esta página son contenido de ejemplo; no describen un negocio real.</p>
+            <a href="#cita" class="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-coal px-6 py-3 font-bold text-white transition hover:bg-zinc-700">Conoce el formulario</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" class="surface-page px-4 py-16 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="gallery-title">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p class="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-warning">Un vistazo al oficio</p>
+              <h2 id="gallery-title" class="font-display text-3xl sm:text-4xl">Detalles que inspiran</h2>
+            </div>
+            <p class="text-muted max-w-md leading-6">Fotografías ilustrativas de cortes y herramientas. Son imágenes externas y requieren conexión a internet.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <figure class="group overflow-hidden rounded-2xl">
+              <img class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&amp;fit=crop&amp;w=800&amp;q=75" alt="Barbero arreglando el cabello de un cliente con una máquina de corte" loading="lazy" decoding="async">
+              <figcaption class="sr-only">Corte de cabello en proceso.</figcaption>
+            </figure>
+            <figure class="group overflow-hidden rounded-2xl">
+              <img class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&amp;fit=crop&amp;w=800&amp;q=75" alt="Barbero cortando el cabello de un cliente desde atrás" loading="lazy" decoding="async">
+              <figcaption class="sr-only">Ejemplo de corte terminado.</figcaption>
+            </figure>
+            <figure class="group overflow-hidden rounded-2xl sm:col-span-2 lg:col-span-1">
+              <img class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&amp;fit=crop&amp;w=800&amp;q=75" alt="Barbero realizando un arreglo de barba con tijeras" loading="lazy" decoding="async">
+              <figcaption class="sr-only">Fotografía ilustrativa de un arreglo de barba.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="surface-card px-4 py-16 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="faq-title">
+        <div class="mx-auto max-w-3xl">
+          <div class="mb-8 text-center">
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-warning">Lo que quizá quieras saber</p>
+            <h2 id="faq-title" class="font-display text-3xl sm:text-4xl">Preguntas frecuentes</h2>
+          </div>
+          <div class="divide-y line-theme border-y">
+            <article class="py-2">
+              <h3><button class="faq-toggle flex w-full items-center justify-between gap-4 py-4 text-left font-bold" type="button" aria-expanded="false" aria-controls="faq-answer-1"><span>¿Barbería Urbana es un negocio real?</span><span class="faq-symbol text-xl text-warning" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer text-muted pb-4 pr-8 leading-7" id="faq-answer-1" hidden><p>No. Es una propuesta ficticia para un taller académico. No tiene una dirección física ni presta servicios al público.</p></div>
+            </article>
+            <article class="py-2">
+              <h3><button class="faq-toggle flex w-full items-center justify-between gap-4 py-4 text-left font-bold" type="button" aria-expanded="false" aria-controls="faq-answer-2"><span>¿Los precios publicados son definitivos?</span><span class="faq-symbol text-xl text-warning" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer text-muted pb-4 pr-8 leading-7" id="faq-answer-2" hidden><p>No. Son valores de ejemplo en pesos colombianos y no corresponden a una tarifa comercial.</p></div>
+            </article>
+            <article class="py-2">
+              <h3><button class="faq-toggle flex w-full items-center justify-between gap-4 py-4 text-left font-bold" type="button" aria-expanded="false" aria-controls="faq-answer-3"><span>¿El formulario reserva una cita?</span><span class="faq-symbol text-xl text-warning" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer text-muted pb-4 pr-8 leading-7" id="faq-answer-3" hidden><p>No. El formulario solo valida los datos en este navegador para demostrar la interacción. No envía información ni reserva una cita.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="cita" class="surface-page px-4 py-16 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="appointment-title">
+        <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-warning">Hablemos de tu estilo</p>
+            <h2 id="appointment-title" class="font-display text-3xl sm:text-4xl">Cuéntanos qué necesitas</h2>
+            <p class="text-muted mt-5 leading-7">Completa el formulario de demostración. Te mostraremos si los datos tienen el formato esperado.</p>
+            <div class="surface-card line-theme mt-7 rounded-2xl border p-5">
+              <h3 class="font-bold">Información de ejemplo</h3>
+              <p class="text-muted mt-3 text-sm leading-6"><strong>Correo:</strong> hola@barberiaurbana.example<br><strong>Teléfono:</strong> +57 300 000 0000</p>
+              <p class="text-muted mt-3 text-xs leading-5">Datos ficticios. No hay dirección real ni canal de atención habilitado.</p>
+            </div>
+          </div>
+
+          <form id="appointment-form" class="surface-card line-theme rounded-2xl border p-5 shadow-sm sm:p-8" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div data-field-wrap>
+                <label class="mb-2 block text-sm font-bold" for="name">Nombre completo <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="field-control min-h-12 w-full rounded-lg border px-4 py-3" id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+                <p class="field-error mt-1 min-h-5 text-sm text-danger" id="name-error" aria-live="polite"></p>
+              </div>
+              <div data-field-wrap>
+                <label class="mb-2 block text-sm font-bold" for="email">Correo electrónico <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="field-control min-h-12 w-full rounded-lg border px-4 py-3" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+                <p class="field-error mt-1 min-h-5 text-sm text-danger" id="email-error" aria-live="polite"></p>
+              </div>
+              <div data-field-wrap>
+                <label class="mb-2 block text-sm font-bold" for="phone">Teléfono <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="field-control min-h-12 w-full rounded-lg border px-4 py-3" id="phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="phone-error">
+                <p class="field-error mt-1 min-h-5 text-sm text-danger" id="phone-error" aria-live="polite"></p>
+              </div>
+              <div data-field-wrap>
+                <label class="mb-2 block text-sm font-bold" for="service">Servicio <span class="text-danger" aria-hidden="true">*</span></label>
+                <select class="field-control min-h-12 w-full rounded-lg border px-4 py-3" id="service" name="service" required aria-describedby="service-error">
+                  <option value="">Selecciona un servicio</option>
+                  <option value="corte">Corte clásico</option>
+                  <option value="corte-barba">Corte + barba</option>
+                  <option value="afeitado">Afeitado clásico</option>
+                </select>
+                <p class="field-error mt-1 min-h-5 text-sm text-danger" id="service-error" aria-live="polite"></p>
+              </div>
+              <div class="sm:col-span-2" data-field-wrap>
+                <label class="mb-2 block text-sm font-bold" for="date">Fecha de preferencia <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="field-control min-h-12 w-full rounded-lg border px-4 py-3" id="date" name="date" type="date" required aria-describedby="date-error">
+                <p class="field-error mt-1 min-h-5 text-sm text-danger" id="date-error" aria-live="polite"></p>
+              </div>
+            </div>
+            <button id="submit-button" class="mt-3 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-6 py-3 font-extrabold text-coal transition hover:bg-yellow-300 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto" type="submit">Validar solicitud de demostración</button>
+            <p class="text-muted mt-4 text-xs leading-5">La página no está conectada a un sistema de reservas. No se envían ni se guardan tus datos y este formulario no confirma una cita real.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-coal px-4 py-10 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="sm:col-span-2">
+          <a href="#inicio" class="font-display text-xl">Barbería <span class="text-gold">Urbana</span></a>
+          <p class="mt-3 max-w-sm text-sm leading-6 text-zinc-300">Proyecto académico ficticio sobre diseño web con HTML, Tailwind CSS 4 y JavaScript.</p>
+        </div>
+        <div>
+          <h2 class="font-bold">Horario de ejemplo</h2>
+          <p class="mt-3 text-sm leading-6 text-zinc-300">Martes a sábado<br>10:00 a. m. – 7:00 p. m.</p>
+          <p class="mt-2 text-xs text-zinc-400">Horario ilustrativo; no corresponde a un negocio abierto.</p>
+        </div>
+        <div>
+          <h2 class="font-bold">Enlaces de demostración</h2>
+          <div class="mt-3 flex gap-4 text-sm">
+            <a class="rounded text-zinc-300 underline-offset-4 hover:text-gold hover:underline" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="rounded text-zinc-300 underline-offset-4 hover:text-gold hover:underline" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+          <p class="mt-2 text-xs text-zinc-400">No son perfiles oficiales de una barbería.</p>
+        </div>
+      </div>
+      <div class="mx-auto mt-8 max-w-7xl border-t border-zinc-700 pt-5 text-xs text-zinc-400">© <span id="current-year">2026</span> Barbería Urbana · Contenido ficticio para uso académico.</div>
+    </footer>
+
+    <div id="toast" class="pointer-events-none fixed bottom-4 left-4 right-4 z-[60] translate-y-3 rounded-xl border border-emerald-800 bg-emerald-50 p-4 text-emerald-950 opacity-0 shadow-xl transition duration-300 sm:left-auto sm:right-6 sm:max-w-md" role="status" aria-live="polite" data-visible="false">
+      <p id="toast-message" class="font-bold">Formulario validado.</p>
+    </div>
+  </body>
+</html>
