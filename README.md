@@ -1,51 +1,60 @@
 # Barbería Urbana
 
-Sitio web ficticio para el taller universitario **“Investigación y desarrollo de un sitio web con Tailwind CSS e inteligencia artificial”**. Se construyó con HTML5, Tailwind CSS 4 y JavaScript puro.
+Sitio web ficticio para el taller universitario “Investigación y desarrollo de un sitio web con Tailwind CSS e inteligencia artificial”. Se construyó con HTML5, Tailwind CSS 4 y JavaScript puro.
 
-## Abrir el proyecto
+**Página publicada:** [Abrir Barbería Urbana](https://josephgerardogonzalez-blip.github.io/barberia-urbana/)
 
-1. Abre la carpeta `barberia-urbana` en el Explorador de archivos.
-2. Haz doble clic en `index.html` para abrirlo en el navegador.
-3. Mantén conexión a internet para cargar Tailwind CSS, las fuentes y las fotografías externas.
+## Descripción
 
-El proyecto no necesita una instalación ni un proceso de compilación para esta versión inicial.
+La página presenta una barbería ficticia con servicios, galería, preguntas frecuentes y un formulario de demostración. Los precios, horarios y datos de contacto son ejemplos; no describen un negocio real.
 
 ## Archivos
 
-- `index.html`: contenido de la página, enlaces a los recursos externos y estilos. En su bloque `@theme` se definen los colores y las fuentes de Tailwind.
-- `js/main.js`: menú móvil, selector de tema, acordeón de preguntas frecuentes, fecha mínima y validación del formulario.
-- `docs/bitacora-iteraciones.md`: registro de las iteraciones, pruebas y tres cambios manuales del estudiante.
-## Funciones de la página
+- `index.html`: contenido y estructura de la página.
+- `js/main.js`: funciones del menú móvil, cambio de tema, acordeón y validación del formulario.
+- `docs/bitacora-iteraciones.md`: registro de las iteraciones con IA, pruebas y cambios manuales del estudiante.
 
-- Diseño adaptable a celular, tableta y computador, con variantes `sm:`, `md:` y `lg:`.
-- Menú móvil que se abre, se cierra con Escape y se cierra al elegir una sección.
-- Modo claro y oscuro, con preferencia guardada en este navegador cuando el almacenamiento está disponible.
-- Acordeón de preguntas frecuentes.
-- Formulario con campos obligatorios, validación de correo y errores junto a los campos.
-- Aviso de demostración cuando los datos pasan la validación.
+## Funciones
 
-**El formulario no envía ni almacena datos y no reserva una cita.** Los nombres, precios, horarios, teléfono y correo son ficticios. No se muestra una dirección real. Los enlaces sociales llevan a las páginas generales de esas redes y no representan perfiles oficiales.
+- Diseño adaptable a computador, tableta y celular.
+- Menú móvil que se abre y se cierra.
+- Cambio entre modo claro y oscuro.
+- Preguntas frecuentes desplegables.
+- Formulario con campos obligatorios y validación del correo.
+- Mensajes de error junto a los campos.
+- Aviso de demostración al validar datos.
 
-## Tailwind CSS y publicación
+El formulario no envía ni guarda información y no reserva citas reales.
 
-Esta versión usa el Play CDN de Tailwind CSS 4 para facilitar el inicio sin instalar paquetes. El Play CDN está pensado para desarrollo y aprendizaje; antes de publicar un sitio de producción se recomienda configurar Tailwind mediante un proceso de compilación.
+## Tecnologías
 
-## Estado de revisión
+- HTML5.
+- Tailwind CSS 4 mediante Play CDN.
+- JavaScript puro.
+- Fuentes Manrope y Playfair Display.
 
-La página y sus funciones principales se revisaron con capturas del navegador y reportes del estudiante. La bitácora contiene cinco iteraciones iniciales y una optimización adicional medida en Lighthouse. Tres cambios manuales del estudiante están completos. En la primera ejecución Mobile, Lighthouse mostró Rendimiento 62, Accesibilidad 100, Buenas prácticas 100 y SEO 100; después de optimizar imágenes, la segunda ejecución mostró Rendimiento 97 y mantuvo las otras categorías en 100. El sitio ya está publicado en GitHub Pages y se comprobó desde computador y celular.
+El Play CDN se usó para el ejercicio académico. Tailwind lo recomienda para desarrollo y aprendizaje; para producción se recomienda compilar Tailwind.
 
-Las comprobaciones manuales confirmadas incluyen validación obligatoria y de correo, aviso de envío válido, cambio de tema, acordeón, menú móvil y diseño en ventana tipo tableta y celular. Los tres cambios manuales se registran en `docs/bitacora-iteraciones.md`.
+## Validación W3C
 
-## Validación HTML
-
-Se subió `index.html` al validador W3C. El checker mostró dos errores en el bloque de Tailwind: no reconoce `type="text/tailwindcss"` ni la directiva `@theme`. Se conservaron porque la [guía oficial de Tailwind Play CDN](https://tailwindcss.com/docs/installation/play-cdn) usa esa sintaxis para permitir CSS personalizado procesado por Tailwind. Este resultado queda registrado; quitar esas indicaciones podría impedir que Tailwind genere el tema personalizado.
+Se subió `index.html` al validador W3C. El informe mostró dos errores: no acepta `type="text/tailwindcss"` y marca `@theme` como una regla desconocida. Se conservaron porque forman parte del bloque que Tailwind Play CDN utiliza para procesar los estilos personalizados. Por eso, el resultado W3C no quedó libre de errores. La página también se comprobó en el navegador.
 
 ## Lighthouse
 
-La primera ejecución en modo Mobile mostró estos resultados: **Rendimiento 62, Accesibilidad 100, Buenas prácticas 100 y SEO 100**. Lighthouse mostró FCP 4,1 s, LCP 4,1 s, TBT 580 ms, CLS 0 y Speed Index 4,1 s. Entre las oportunidades visibles estaban recursos que bloquean el renderizado (ahorro estimado de 1.340 ms) y una mejor entrega de imágenes (191 KiB). Después de reducir dimensiones y calidad de imágenes y añadir carga diferida debajo del hero, la segunda ejecución mostró Rendimiento **97**, con Accesibilidad, Buenas prácticas y SEO en **100**. Las puntuaciones pueden variar entre ejecuciones; estos valores corresponden a las capturas del estudiante.
+En la primera revisión Mobile, Lighthouse mostró Rendimiento 62, Accesibilidad 100, Buenas prácticas 100 y SEO 100. Después de optimizar las imágenes, la revisión mostró Rendimiento 97 y mantuvo las otras tres categorías en 100. Las puntuaciones pueden variar entre ejecuciones.
 
-Las capturas de W3C, Lighthouse, formulario, tema y vista móvil se conservan en `docs/capturas/` como evidencia local. No se incluyen en la copia preparada para publicar: una captura deja ver parte de la ruta local de Windows. No son necesarias para que el sitio funcione.
+## Cambios manuales
 
-## Entrega y sustentación
+El estudiante realizó estos tres cambios directamente en el código:
 
-- [Bitácora de iteraciones](docs/bitacora-iteraciones.md)
+- Cambió el precio de ejemplo de Corte clásico a `$38.000`.
+- Modificó la descripción de ese servicio.
+- Actualizó el texto alternativo de una imagen de la galería.
+
+## Publicación
+
+El sitio está publicado en GitHub Pages desde la rama `main` y la carpeta raíz del repositorio. Se comprobó que abre en computador y celular.
+
+## Bitácora
+
+Consulta la [bitácora de iteraciones](docs/bitacora-iteraciones.md) para ver los prompts, los cambios comprobados y las pruebas realizadas.
