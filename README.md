@@ -53,4 +53,3 @@ Las capturas de W3C, Lighthouse, formulario, tema y vista móvil se conservan en
 
 - [Bitácora de iteraciones](docs/bitacora-iteraciones.md)
 - [Pasos para publicar](docs/publicacion.md)
-- [Guion de sustentación](docs/guion-sustentacion.md)
