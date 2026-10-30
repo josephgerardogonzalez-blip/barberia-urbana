@@ -15,9 +15,6 @@ El proyecto no necesita una instalación ni un proceso de compilación para esta
 - `index.html`: contenido de la página, enlaces a los recursos externos y estilos. En su bloque `@theme` se definen los colores y las fuentes de Tailwind.
 - `js/main.js`: menú móvil, selector de tema, acordeón de preguntas frecuentes, fecha mínima y validación del formulario.
 - `docs/bitacora-iteraciones.md`: registro de las iteraciones, pruebas y tres cambios manuales del estudiante.
-- `docs/publicacion.md`: guía paso a paso para subir el proyecto a GitHub Pages o Netlify.
-- `docs/guion-sustentacion.md`: borrador de guion de aproximadamente ocho minutos, basado en lo construido y probado.
-
 ## Funciones de la página
 
 - Diseño adaptable a celular, tableta y computador, con variantes `sm:`, `md:` y `lg:`.
@@ -35,7 +32,7 @@ Esta versión usa el Play CDN de Tailwind CSS 4 para facilitar el inicio sin ins
 
 ## Estado de revisión
 
-La página y sus funciones principales se revisaron con capturas del navegador y reportes del estudiante. La bitácora contiene cinco iteraciones iniciales y una optimización adicional medida en Lighthouse. Tres cambios manuales del estudiante están completos. En la primera ejecución Mobile, Lighthouse mostró Rendimiento 62, Accesibilidad 100, Buenas prácticas 100 y SEO 100; después de optimizar imágenes, la segunda ejecución mostró Rendimiento 97 y mantuvo las otras categorías en 100. La guía de publicación y el guion de sustentación están preparados; publicar en una cuenta externa queda a cargo del estudiante.
+La página y sus funciones principales se revisaron con capturas del navegador y reportes del estudiante. La bitácora contiene cinco iteraciones iniciales y una optimización adicional medida en Lighthouse. Tres cambios manuales del estudiante están completos. En la primera ejecución Mobile, Lighthouse mostró Rendimiento 62, Accesibilidad 100, Buenas prácticas 100 y SEO 100; después de optimizar imágenes, la segunda ejecución mostró Rendimiento 97 y mantuvo las otras categorías en 100. El sitio ya está publicado en GitHub Pages y se comprobó desde computador y celular.
 
 Las comprobaciones manuales confirmadas incluyen validación obligatoria y de correo, aviso de envío válido, cambio de tema, acordeón, menú móvil y diseño en ventana tipo tableta y celular. Los tres cambios manuales se registran en `docs/bitacora-iteraciones.md`.
 
